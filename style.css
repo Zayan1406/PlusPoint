@@ -1,0 +1,539 @@
+:root {
+    --primary-color: #A00000;
+    --secondary-color: #121212;
+    --text-color: #f8f9fa;
+    --light-bg: #0a0a0a;
+    --white: #ffffff;
+    --dark-bg: #1c1f22;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes spin-grow {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+.hero-section {
+    position: relative;
+    padding: 8rem 0;
+    text-align: center;
+    overflow: hidden;
+    background-color: var(--light-bg);
+    z-index: 1;
+
+    /* Updated to a light background image */
+    background-image: url('landing\ page\ photo.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Add the new CSS code right here */
+.hero-title, .hero-section p.lead {
+    color: #ffffff; /* Dark text color */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* A semi-transparent black overlay */
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: -1;
+}
+
+/* Any other CSS rules below this */
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%),
+                linear-gradient(to right, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 1) 100%); /* Fading from bottom, left, and right */
+    z-index: -1;
+}
+
+.navbar {
+    /* Style the main navbar container for the "House of Shafaq" look */
+    background-color: rgba(10, 10, 10, 0.4) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    min-height: 50px;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95%;
+    max-width: 1200px;
+}
+
+.navbar .container {
+    /* Use Flexbox to align all content centrally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-collapse {
+    /* Use Flexbox to center the navigation links */
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.navbar-nav {
+    /* Center the nav items */
+    margin: 0 auto;
+}
+
+/* ---- Logo and Link Styling ---- */
+.navbar-brand {
+    /* Position the logo on the far left */
+    position: absolute;
+    left: 20px;
+    /* Change the color of the PLUSPOINT text */
+    color: #A00000 !important;
+}
+
+.navbar-brand img {
+    /* Style the logo to be smaller and match the HOS look */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none; /* No border for the HOS logo */
+}
+
+.nav-link {
+    /* Add a slight text transform to match the design */
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8) !important;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: white !important;
+}
+
+/* ---- Active Link and Button Styling ---- */
+.nav-link.active {
+    color: var(--primary-color) !important;
+    font-weight: 600;
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.btn-primary {
+    /* Position the button on the far right */
+    position: absolute;
+    right: 20px;
+    
+    /* Style the "Let's Talk" button */
+    background-color: white !important;
+    color: black !important;
+    border: none !important;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 50px;
+}
+
+.btn-primary:hover {
+    background-color: #f0f0f0 !important;
+}
+
+/* ---- Mobile Responsiveness ---- */
+@media (max-width: 991px) {
+    .navbar {
+        width: 90%;
+        border-radius: 20px;
+        padding: 0.5rem;
+    }
+    
+    .navbar .container {
+        justify-content: space-between;
+    }
+    
+    .navbar-brand, .btn-primary {
+        position: static;
+        transform: none;
+    }
+    
+    .navbar-brand {
+        margin-right: auto;
+    }
+    
+    .navbar-toggler {
+        margin-left: auto;
+    }
+    
+    .navbar-collapse {
+        justify-content: flex-start;
+    }
+}
+
+.animated-logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background-color: var(--primary-color);
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    z-index: 11;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.animated-logo.active {
+    width: 25px;
+    height: 25px;
+    animation: spin-grow 0.8s ease-out forwards;
+}
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+}
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.btn {
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: color 0.4s ease-in-out;
+}
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.4s ease-in-out;
+    z-index: -1;
+}
+.btn:hover::before {
+    transform: scaleX(1);
+}
+.btn-primary {
+    background-color: var(--white);
+    border-color: var(--white);
+    color: var(--dark-bg);
+}
+.btn-primary:hover {
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+.btn-outline-primary {
+    background-color: transparent;
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+.btn-outline-primary:hover {
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+.btn:focus, .btn:focus-visible, .form-control:focus, .form-control:focus-visible {
+    outline: none !important;
+    box-shadow: 0 0 0 0.25rem rgba(160, 0, 0, 0.25) !important;
+    border-color: var(--primary-color) !important;
+}
+
+.hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.section-heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+.bento-grid .card {
+    background-color: var(--secondary-color);
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 15px;
+    color: var(--text-color);
+    padding: 2rem;
+}
+.bento-grid .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.service-icon {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1rem;
+    display: block;
+    object-fit: contain; /* Ensures the entire image is visible without distortion */
+}
+
+.lottie-icon {
+    display: none; /* Hides the old lottie-player class, as it's no longer used */
+}
+.lottie-icon {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1rem;
+    display: block;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+.text-muted {
+    color: #b0b0b0 !important;
+}
+
+
+
+.footer {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    padding: 3rem 0;
+    font-size: 0.9rem;
+    border-top-left-radius: 20px; /* Rounded corners for footer */
+    border-top-right-radius: 20px;
+    position: relative;
+    overflow: hidden; /* Ensure gradient doesn't overflow */
+}
+
+.footer::before { /* Top fading dark gradient for footer */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px; /* Height of the fade */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0));
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+.footer a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+.footer a:hover {
+    color: var(--primary-color);
+}
+.footer a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease-in-out;
+    transform: translateX(-50%);
+}
+.footer a:hover::after {
+    width: 100%;
+}
+
+.footer .contact-info li {
+    margin-bottom: 0.5rem;
+}
+.footer .contact-info strong {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+.footer .social-bottom-link {
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem; /* Space before copyright */
+}
+
+.footer-instagram-link {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+.footer-instagram-link i {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.footer-arrow-link {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+pluspoint-contact {
+    display: block;
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    max-width: 600px;
+    margin: 0 auto;
+}
+pluspoint-contact h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+pluspoint-contact p {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+/* ... other CSS code ... */
+
+pluspoint-contact form .form-control {
+    background-color: var(--light-bg);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+pluspoint-contact form .form-control::placeholder {
+    color: var(--text-color);
+    opacity: 0.5;
+}
+
+pluspoint-contact form .btn-primary {
+    width: 100%;
+}
+
+.form-control:focus, .form-control:focus-visible {
+    /* Remove the default white outline */
+    outline: none !important;
+    
+    /* Change the border and box-shadow to a dark red color */
+    box-shadow: 0 0 0 0.25rem rgba(160, 0, 0, 0.25) !important;
+    border-color: var(--primary-color) !important;
+    
+    /* Add text color that is visible on the focused background */
+    color: var(--primary-color) !important;
+}
+@keyframes scroll {
+    0% { height: 0; }
+    100% { height: 60px; }
+}
+
+.scroll-indicator {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--text-color);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.scroll-indicator span {
+    margin-bottom: 10px;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 60px;
+    background-color: var(--text-color);
+    animation: scroll 2s ease-in-out infinite;
+}
+
+/* Adjustments for better gradient placement in relation to team section */
+#team {
+    position: relative;
+    z-index: 1; /* Ensure team content is above the gradient-bg */
+}
